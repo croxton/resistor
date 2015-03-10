@@ -2,56 +2,56 @@
 
 * Author: [Mark Croxton](http://hallmark-design.co.uk/)
 
-## Version 1.0.0 (beta)
+### Version 1.0.0 (beta)
 
 * Requires: [ExpressionEngine](https://ellislab.com/expressionengine), [Stash](https://github.com/croxton/stash), [Low Search](http://gotolow.com/addons/low-search), [Wires](https://github.com/croxton/Wires). 
 * Optional: [Playa](https://devot-ee.com/add-ons/playa), [Solspace Tag](http://www.solspace.com/software/detail/tag/), [Taxonomy](https://devot-ee.com/add-ons/taxonomy), [Tax Playa](https://github.com/croxton/tax_playa)
 
-## Description
+### Description
 
 Resistor is a subclass of Low Search that allows you to generate links for drill-down style entry filtering (multifaceted navigation). It is designed to be used in conjunction with [Wires](https://github.com/croxton/Wires).
 
-## Features
+### Features
 
 * All the features of Low Search plus multi-pass filtering (2 passes currently supported), permitting combinations of AND / OR filtering for the same filter.
 * Show remaining filter options for a given resultset and already-selected filters, together with the counts.
 
-## Installation
+### Installation
 
 1. [Download Wires](https://github.com/croxton/Resistor/archive/master.zip) and un-zip
 2. Move the folder 'resistor' into ./system/expressionengine/third_party/
 3. Edit ./system/epxressionengine/third_party/low_search/libraries/Low_search_filters.php and add this function:
 
-    // --------------------------------------------------------------------
+	// --------------------------------------------------------------------
 
-    /**
-     * Set entry ids
-     *
-     * @access     public
-     * @param      array
-     * @return     null
-     */
-    public function set_entry_ids($entry_ids)
-    {
-        $this->_entry_ids = $entry_ids;
-    }
+	/**
+	 * Set entry ids
+	 *
+	 * @access     public
+	 * @param      array
+	 * @return     null
+	 */
+	public function set_entry_ids($entry_ids)
+	{
+	    $this->_entry_ids = $entry_ids;
+	}
 
-## Caveats
+### Caveats
 
 I don't have time to provide support for this add-on. While it has the potential to save experienced EE developers a huge amount of time and effort, it is equally likely to frustrate the inexperienced and drive them to drink. *Please* don't use it unless you know what you're doing. You have been warned!
 
-## {exp:resistor:results}
+### {exp:resistor:results}
 
 Use in place of {exp:low_search:results}, with these additional parameters:
 
-### `fallback_when_empty=""` 
+#### `fallback_when_empty=""` 
 When no filters are selected, you may wish to show all entries rather than no results. Use this parameter to list the filters you are using, and when ALL of them are empty the fallback is shown. When any one of them has a value, only results matching the filter will be shown.
 
-### `refine:[filter]=""` 
+#### `refine:[filter]=""` 
 Specify second-pass filters by prefixing with `refine:`.
 
 
-## Example search form
+### Example search form
 
 	{exp:wires:connect 
 		id="site_search" 
@@ -137,7 +137,7 @@ Specify second-pass filters by prefixing with `refine:`.
 	{/exp:wires:connect}
 
 
-## Show selected options & further refinements
+### Selected options & further refinements
 
 	{exp:wires:connect id="site_search" prefix="inner"}
 
