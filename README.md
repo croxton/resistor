@@ -22,20 +22,19 @@ Resistor is a subclass of Low Search that allows you to generate links for drill
 2. Move the folder 'resistor' into ./system/expressionengine/third_party/
 3. Edit ./system/epxressionengine/third_party/low_search/libraries/Low_search_filters.php and add this function:
 
-```
-
-	/**
-	 * Set entry ids
-	 *
-	 * @access     public
-	 * @param      array
-	 * @return     null
-	 */
-	public function set_entry_ids($entry_ids)
-	{
-	    $this->_entry_ids = $entry_ids;
-	}
-	
+```php
+/**
+ * Set entry ids
+ *
+ * @access     public
+ * @param      array
+ * @return     null
+ */
+public function set_entry_ids($entry_ids)
+{
+    $this->_entry_ids = $entry_ids;
+}
+```	
 
 ### Caveats
 
