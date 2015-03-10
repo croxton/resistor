@@ -18,7 +18,7 @@ Resistor is a subclass of Low Search that allows you to generate links for drill
 
 ### Installation
 
-1. [Download Wires](https://github.com/croxton/Resistor/archive/master.zip) and un-zip
+1. [Download Resistor](https://github.com/croxton/resistor/archive/master.zip) and un-zip
 2. Move the folder 'resistor' into ./system/expressionengine/third_party/
 3. Edit ./system/epxressionengine/third_party/low_search/libraries/Low_search_filters.php and add this function:
 
