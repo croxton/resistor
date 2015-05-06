@@ -12,7 +12,7 @@
 class Resistor_upd {
     
     public $name    = 'Resistor';
-    public $version = '1.0.0';
+    public $version = '1.0.1';
     
     /**
      * Stash_upd

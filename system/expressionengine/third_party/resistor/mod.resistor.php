@@ -56,11 +56,14 @@ class Resistor extends Low_search {
 	 */
 	public function __construct() 
 	{
+		//  Define a package path for Low Search 
+		ee()->load->add_package_path(PATH_THIRD.'low_search');
+
 		parent::__construct();
 		$this->EE = get_instance(); // required by Stash
 		$this->params  =& ee()->low_search_params; // required by Low Search
 
-		// use Stash for generating lists of related items
+		// use Stash for caching results from each pass of the Low Search filters
 		if ( ! class_exists('Stash'))
 		{
     		include_once PATH_THIRD . 'stash/mod.stash.php';
@@ -93,6 +96,10 @@ class Resistor extends Low_search {
 			ee()->publisher_lib->lang_id = 1;
 		}
 
+		// load libraries
+		ee()->load->library('Low_search_filters');
+		ee()->load->library('Low_search_fields');
+
 		$params  = array(); // used for first pass of filters
 		$refine  = array(); // used for second pass of filters
 		$entry_ids = array(); // found entries
@@ -101,13 +108,10 @@ class Resistor extends Low_search {
 		$stime = $etime = $channel = FALSE;
 
 		// register params
+		$fallback_when_empty = ee()->TMPL->fetch_param('fallback_when_empty', FALSE);
 		$cache_id = ee()->TMPL->fetch_param('id', 'default');
 		$future = (bool) preg_match('/1|on|yes|y/i', ee()->TMPL->fetch_param('show_future_entries'));
 		$dynamic = (bool) preg_match('/1|on|yes|y/i', ee()->TMPL->fetch_param('dynamic'));
-
-		// when the filters listed in 'fallback_when_empty' are ALL empty, show everything
-		// if you don't specify this parameter then results are only shown when one or more filters match
-		$fallback_when_empty = ee()->TMPL->fetch_param('fallback_when_empty', FALSE);
 
 		$original_params = ee()->TMPL->tagparams; // make a copy
 
@@ -261,9 +265,6 @@ class Resistor extends Low_search {
 
 		if ($do_filters)
 		{	
-			// load filter library
-			ee()->load->library('Low_search_filters');
-
 			#$cache_key = md5(json_encode($original_params));
 
 			#if (FALSE == $entry_ids = $this->_get_cache($cache_key))
@@ -416,7 +417,7 @@ class Resistor extends Low_search {
 		else
 		{
 			// set the entry_id/fixed_order param
-			ee()->TMPL->tagparams[$this->_order] = low_implode_param($entry_ids);
+			ee()->TMPL->tagparams[$this->_order] = $this->params->implode($entry_ids);
 
 			// -------------------------------------
 			// 'low_search_post_search' hook.

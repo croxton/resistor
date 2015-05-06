@@ -2,7 +2,7 @@
 
 * Author: [Mark Croxton](http://hallmark-design.co.uk/)
 
-### Version 1.0.0 (beta)
+### Version 1.0.1 (beta)
 
 * Requires: [ExpressionEngine](https://ellislab.com/expressionengine), [Stash](https://github.com/croxton/stash), [Low Search](http://gotolow.com/addons/low-search), [Wires](https://github.com/croxton/Wires). 
 * Optional: [Playa](https://devot-ee.com/add-ons/playa), [Solspace Tag](http://www.solspace.com/software/detail/tag/), [Taxonomy](https://devot-ee.com/add-ons/taxonomy), [Tax Playa](https://github.com/croxton/tax_playa)
